@@ -40,11 +40,13 @@ class AccountListsTesting {
 	
 	@Test
 	void writeToFile() throws Exception {
+		testAcctList.add(testAcct0);
+		testAcctList.add(testAcct1);
 		testAcctList.saveToFile();
 		File file = new File("accountLists.txt");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
-		assertEquals("helloworld", reader.readLine());
+		assertEquals(testAcct0.getID() + ',' +testAcct0.getName() + ',' + testAcct0.getBalance(), reader.readLine());
+		assertEquals(testAcct1.getID() + ',' +testAcct1.getName() + ',' + testAcct1.getBalance(), reader.readLine());
 		reader.close();
 	}
-
 }
